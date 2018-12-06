@@ -8,17 +8,23 @@ pyterm helps positioning the cursor and styling output inside the terminal.
 
 Project on github https://github.com/gravmatt/py-term
 """
-from __future__ import print_function
 __author__ = 'Rene Tanczos'
 __version__ = '0.7'
 __license__ = 'MIT'
 
-import sys
-import re
+import ctypes
 import os
+import platform
+import re
+import sys
 
+if platform.system() == 'Windows':
+    kernel32 = ctypes.windll.kernel32
+    kernel32.SetConsoleMode(kernel32.GetStdHandle(-11), 7)
 
-off = '\033[0m\033[27m'
+print(platform.system())
+
+off = '\033[0m\033[27m' if platform.system() == 'Windows' else '\033[27m\033[0m'
 bold = '\033[1m'
 dim = '\033[2m'
 underscore = '\033[4m'
@@ -45,8 +51,8 @@ bgcyan = '\033[46m'
 bgwhite = '\033[47m'
 
 
-def send(cmd):
-    sys.stdout.write(cmd)
+def send(cmd, end='\n'):
+    sys.stdout.write(cmd + str(end if platform.system() != 'Windows' else '\r' + end))
     sys.stdout.flush()
 
 
@@ -101,11 +107,12 @@ def clearLine():
 
 
 def write(text='', *style):
+    style = [s for s in style]
     send(format(text, *style))
 
 
 def writeLine(text='', *style):
-    write(str(text) + '\n', *style)
+    write(str(text), *style)
 
 
 def setTitle(name):
@@ -139,13 +146,14 @@ def right(text):
 def getSize():
     import platform
     os_sys = platform.system()
-    if(os_sys in ['Linux', 'Darwin'] or os_sys.startswith('CYGWIN')):
+    if (os_sys in ['Linux', 'Darwin'] or os_sys.startswith('CYGWIN')):
         try:
             def __get_unix_terminal_size(fd):
                 import fcntl, termios, struct
                 return struct.unpack('hh', fcntl.ioctl(fd, termios.TIOCGWINSZ, 'rene'))
+
             cr = __get_unix_terminal_size(0) or __get_unix_terminal_size(1) or __get_unix_terminal_size(2)
-            if(not cr):
+            if (not cr):
                 fd = os.open(os.ctermid(), os.O_RDONLY)
                 cr = __get_unix_terminal_size(fd)
                 os.close(fd)
@@ -157,7 +165,7 @@ def getSize():
 
 
 def format(text, *style):
-    if(style):
+    if style:
         return '%s%s%s' % (''.join(style), text, off)
     else:
         return text
