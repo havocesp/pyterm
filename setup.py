@@ -7,7 +7,7 @@ except ImportError:
     from distutils.core import setup
 
 if sys.version_info < (2, 6):
-    raise NotImplementedError("Sorry, you need at least Python 2.6 or Python 3.2+ to use py-term.")
+    raise NotImplementedError("Sorry, you need at least Python 2.7 or Python 3.5+ to use py-term.")
 
 import term
 
@@ -24,20 +24,20 @@ setup(name='py-term',
       py_modules=['term'],
       scripts=['term.py'],
       license='MIT',
-      platforms=['MacOSX', 'UNIX/Linux'],
+      platforms=['MacOSX', 'UNIX/Linux', 'Windows10'],
       classifiers=['Intended Audience :: Developers',
                    'License :: OSI Approved :: MIT License',
-                   'Programming Language :: Python :: 2.5',
-                   'Programming Language :: Python :: 2.6',
                    'Programming Language :: Python :: 2.7',
                    'Programming Language :: Python :: 3',
-                   'Programming Language :: Python :: 3.2',
-                   'Programming Language :: Python :: 3.3',
+                   'Programming Language :: Python :: 3.5',
+                   'Programming Language :: Python :: 3.6',
+                   'Programming Language :: Python :: 3.7',
                    'Intended Audience :: Developers',
                    'Programming Language :: Python',
                    'Development Status :: 5 - Production/Stable',
                    'Operating System :: MacOS :: MacOS X',
                    'Operating System :: POSIX',
+                   'Operating System :: Windows:: 10',
                    'Topic :: Terminals',
                    'Environment :: Console'
                    ],
