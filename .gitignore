@@ -4,3 +4,4 @@ build/
 dist/
 py_term.egg-info
 py-term-0.1/
+/.idea/

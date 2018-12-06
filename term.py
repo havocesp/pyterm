@@ -8,15 +8,14 @@ pyterm helps positioning the cursor and styling output inside the terminal.
 
 Project on github https://github.com/gravmatt/py-term
 """
-
+from __future__ import print_function
 __author__ = 'Rene Tanczos'
-__version__ = '0.6'
+__version__ = '0.7'
 __license__ = 'MIT'
 
 import sys
 import re
 import os
-from subprocess import Popen, PIPE
 
 
 off = '\033[0m\033[27m'
