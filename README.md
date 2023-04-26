@@ -84,58 +84,58 @@ term.write(term.format('All in one line', term.reverse))
 **Center align**
 
 ```
-# term.textCenter(text)
+# Term.text_center(text)
 
-term.write_line(term.textCenter('Super Python!'))
+Term.write_line(term.text_center('Super Python!'))
 ```
 
 **Right align**
 
 ```
-# term.text_right(text)
+# Term.text_right(text)
 
-term.write_line(term.text_right('Rene Tanczos (@gravmatt)'))
+Term.write_line(Term.text_right('Rene Tanczos (@gravmatt)'))
 
-( Function term.right() to align text is depricated because of naming conflicts! )
+( Function Term.right() to align text is depricated because of naming conflicts! )
 ```
 
 ##### Style attributes
 
 | Code                  | Description                          |
 | :-------------------- | :----------------------------------- |
-| term.off        | All attributes off                   |
-| term.bold       | Bold                                 |
-| term.dim        | Dim                                  |
-| term.underscore | Underscore (monochrome display only) |
-| term.blink      | Blink                                |
-| term.reverse    | Reverse                              |
-| term.hide       | Hide                                 |
+| Term.OFF        | All attributes off                   |
+| Term.BOLD       | Bold                                 |
+| Term.DIM        | Dim                                  |
+| Term.UNDERSCORE | Underscore (monochrome display only) |
+| Term.BLINK      | Blink                                |
+| Term.REVERSE    | Reverse                              |
+| Term.HIDE       | Hide                                 |
 
 ##### Text color
 
 | Code               | Color       |
 | :----------------- | :---------- |
-| term.black   | Black       |
-| term.red     | Red         |
-| term.green   | Green       |
-| term.yellow  | Yellow      |
-| term.blue    | Blue        |
-| term.magenta | Magenta     |
-| term.cyan    | Cyan        |
-| term.white   | White       |
+| Term.BLACK   | Black       |
+| Term.RED     | Red         |
+| Term.GREEN   | Green       |
+| Term.YELLOW  | Yellow      |
+| Term.BLUE    | Blue        |
+| Term.MAGENTA | Magenta     |
+| Term.CYAN    | Cyan        |
+| Term.WHITE   | White       |
 
 ##### Background color
 
 | Code                 | Color       |
 | :------------------- | :---------- |
-| term.bgblack   | Black       |
-| term.bgred     | Red         |
-| term.bggreen   | Green       |
-| term.bgyellow  | Yellow      |
-| term.bgblue    | Blue        |
-| term.bgMagenta | Magenta     |
-| term.bgcyan    | Cyan        |
-| term.bgwhite   | White       |
+| Term.bgblack   | Black       |
+| Term.bgred     | Red         |
+| Term.bggreen   | Green       |
+| Term.bgyellow  | Yellow      |
+| Term.bgblue    | Blue        |
+| Term.bgMagenta | Magenta     |
+| Term.bgcyan    | Cyan        |
+| Term.bgwhite   | White       |
 
 ## Remove style attributes
 
@@ -143,10 +143,10 @@ Removes style characters.
 
 (Good to call before you count a string)
 ```
-term.strip(formatted_text)
+Term.strip(formatted_text)
 
-hello = term.red + 'hello, world' + term.off
-print hello
+hello = Term.RED + 'hello, world' + Term.OFF
+print(hello)
 # '\x1b[31mhello, world\x1b[0m\x1b[27m'
 
 print term.strip(hello)
@@ -158,9 +158,9 @@ print term.strip(hello)
 Simple highlighting of unformatted text strings
 ```
 def callback(matching_text):
-  return term.blue + matching_text + term.off
+  return Term.BLUE + matching_text + Term.OFF
 
-output, match_count, array_of_positions = term.highlight(regex_pattern, text, callback)
+output, match_count, array_of_positions = Term.highlight(regex_pattern, text, callback)
 ```
 
 Return a tuple.
@@ -188,75 +188,75 @@ term.set_tab('Hello Tab')
 
 # or clear it
 
-term.clear_tab()
+Term.clear_tab()
 ```
 
 ## Cursor position
 
 Move the cursor to a specific position.
 ```
-term.pos(line, column)
+Term.pos(line, column)
 
-term.pos(2, 15)
+Term.pos(2, 15)
 ```
 
 Get the size of the terminal (lines and columns)
 
 ```
-(30, 100) = term.get_size()
+(30, 100) = Term.get_size()
 
-# (lines, colums) = term.get_size()
+# (lines, colums) = Term.get_size()
 ```
 
 Move the cursor to the home position (1, 1).
 
 ```
-term.homePos()
+Term.home_pos()
 ```
 
 Moves the current cursor position up, down, left or right by the specified value.
 
 ```
-term.up(value=1)
-term.down(value=1)
-term.left(value=1)
-term.right(value=1)
+Term.up(value=1)
+Term.down(value=1)
+Term.left(value=1)
+Term.right(value=1)
 ```
 
 Saves the current cursor position.
 
 ```
-term.save_cursor()
+Term.save_cursor()
 ```
 
 Restore the previously stored cursor position.
 
 ```
-term.restore_cursor()
+Term.restore_cursor()
 ```
 
 Clear the terminal screen.
 
 ```
-term.clear()
+Term.clear()
 ```
 
 Clear the entire line on the current cursor position.
 
 ```
-term.clear_line()
+Term.clear_line()
 ```
 
 Clear line from the current cursor position to the end.
 
 ```
-term.clear_line_from_pos()
+Term.clear_line_from_pos()
 ```
 
 Clear line from begin to current cursor position.
 
 ```
-term.clear_line_to_pos()
+Term.clear_line_to_pos()
 ```
 
 ## Licence
